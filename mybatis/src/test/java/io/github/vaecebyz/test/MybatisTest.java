@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import java.io.InputStream;
-import java.rmi.server.ExportException;
 import java.util.List;
 
 public class MybatisTest {
@@ -16,9 +15,9 @@ public class MybatisTest {
     public static void main(String[] args) throws Exception {
 //            读取配置文件
        InputStream in = Resources.getResourceAsStream("SqlMapConfig.xml");
-//        创建sqlsessionFactory
-       SqlSessionFactoryBuilder buider = new SqlSessionFactoryBuilder();
-       SqlSessionFactory factory =   buider.build(in);
+//        创建sessionFactory
+       SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
+       SqlSessionFactory factory =   builder.build(in);
 //        使用工厂生产对象
         SqlSession session =  factory.openSession();
 //        使用创建代理对象
