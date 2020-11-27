@@ -3,11 +3,11 @@ package io.github.vaecebyz.domain;
 import java.io.Serializable;
 
 public class User implements Serializable {
-private  Integer id;
-private  String nickname;
-private  String avatar;
-private  Integer gender;
-private String address;
+    private Integer id;
+    private String nickname;
+    private String avatar;
+    private Integer gender;
+    private String address;
 
     @Override
     public String toString() {
@@ -70,7 +70,6 @@ private String address;
     }
 
     private String info;
-
 
 
 }
