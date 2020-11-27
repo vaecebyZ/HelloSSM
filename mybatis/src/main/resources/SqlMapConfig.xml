@@ -4,15 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!--mybatis主要配置-->
 <configuration>
-<!--配置环境-->
+    <!--配置环境-->
     <environments default="mysql">
-<!--        配置mysql环境-->
+        <!--        配置mysql环境-->
         <environment id="mysql">
-<!--            事务类型-->
+            <!--            事务类型-->
             <transactionManager type="JDBC"></transactionManager>
-<!--            配置连接池-->
+            <!--            配置连接池-->
             <dataSource type="POOLED">
-<!--                配置连接数据库的信息-->
+                <!--                配置连接数据库的信息-->
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
                 <property name="url" value="jdbc:mysql://127.0.0.1:3306/test"/>
                 <property name="username" value="root"/>
@@ -23,9 +23,9 @@
 
     <mappers>
         <!--    如果使用注解应该使用class属性被注解的全限定类名(注意已经改名IUserDao.xml)-->
-                <mapper class="io.github.vaecebyz.dao.IUserDao"></mapper>
+        <!--                <mapper class="io.github.vaecebyz.dao.IUserDao"></mapper>-->
 
         <!--    指定映射文件位置-->
-<!--        <mapper resource="io/github/vaecebyz/dao/IUserDao.xml"></mapper>-->
+        <mapper resource="io/github/vaecebyz/dao/IUserDao.xml"></mapper>
     </mappers>
 </configuration>
