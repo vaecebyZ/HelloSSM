@@ -20,8 +20,12 @@
             </dataSource>
         </environment>
     </environments>
-<!--    指定映射文件位置-->
+
     <mappers>
-        <mapper resource="io/github/vaecebyz/dao/IUserDao.xml"></mapper>
+        <!--    如果使用注解应该使用class属性被注解的全限定类名(注意已经改名IUserDao.xml)-->
+                <mapper class="io.github.vaecebyz.dao.IUserDao"></mapper>
+
+        <!--    指定映射文件位置-->
+<!--        <mapper resource="io/github/vaecebyz/dao/IUserDao.xml"></mapper>-->
     </mappers>
 </configuration>
