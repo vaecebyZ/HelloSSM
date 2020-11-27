@@ -9,7 +9,7 @@ public interface IUserDao  {
 
     //查询所有
     //使用注解
-    @Select("select * from people")
+    //@Select("select * from people")
 
     List<User> findAll();
 }
