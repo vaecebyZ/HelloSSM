@@ -50,7 +50,12 @@ public class User implements Serializable {
     }
 
     public void setGender(Integer gender) {
-        this.gender = gender;
+        if(gender == 1 || gender ==0){
+            this.gender = gender;
+        }else {
+            this.gender = 0;
+        }
+
     }
 
     public String getAddress() {

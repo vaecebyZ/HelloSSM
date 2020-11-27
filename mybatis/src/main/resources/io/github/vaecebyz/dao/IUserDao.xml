@@ -12,4 +12,11 @@
 
     </select>
 
+    <!--    保存用户-->
+    <insert id="saveUser" parameterType="io.github.vaecebyz.domain.User">
+
+        insert into people(nickname,avatar,gender,address,info) values(#{nickname},#{avatar},#{gender},#{address},#{info});
+
+    </insert>
+
 </mapper>

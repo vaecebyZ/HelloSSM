@@ -6,30 +6,65 @@ import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 import java.io.InputStream;
 import java.util.List;
 
 public class MybatisTest {
 
-    public static void main(String[] args) throws Exception {
-//读取配置文件
-        InputStream in = Resources.getResourceAsStream("SqlMapConfig.xml");
+    private InputStream in;
+    private SqlSession session;
+    private IUserDao userDao;
+
+    @Before //测试方法之前执行
+    public void init() throws Exception {
+        //读取配置文件
+        in = Resources.getResourceAsStream("SqlMapConfig.xml");
 //创建sessionFactory
-        SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
-        SqlSessionFactory factory = builder.build(in);
+        SqlSessionFactory factory = new SqlSessionFactoryBuilder().build(in);
 //使用工厂生产对象
-        SqlSession session = factory.openSession();
+        session = factory.openSession();
 //使用创建代理对象
-        IUserDao userDao = session.getMapper(IUserDao.class);
-//使用代理对象执行方法
+        userDao = session.getMapper(IUserDao.class);
+
+    }
+
+    @After //测试结束之后执行
+    public void destroy() throws Exception {
+        //释放资源
+        session.close();
+        in.close();
+    }
+
+    @Test
+    public void testFindAll() {
+
+        //使用代理对象执行方法
         List<User> users = userDao.findAll();
         for (User user : users) {
             System.out.println(user);
         }
-//释放资源
-        session.close();
-        in.close();
+
+    }
+
+    @Test
+    public void testSave() throws Exception {
+        User user = new User();
+        user.setNickname("vaecebyz");
+        user.setAvatar("vaecebyz.jpg");
+        user.setGender(1);
+        user.setAddress("浙江");
+        user.setInfo("你好");
+
+        System.out.println(user);
+
+        userDao.saveUser(user);
+
+        //提交事务
+        session.commit();
 
     }
 }

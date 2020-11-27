@@ -12,4 +12,6 @@ public interface IUserDao {
     //@Select("select * from people")
 
     List<User> findAll();
+
+    int saveUser(User user);
 }
