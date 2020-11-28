@@ -27,6 +27,13 @@
 
     <!--    保存用户-->
     <insert id="saveUser" parameterType="io.github.vaecebyz.domain.User">
+    -- 插入操作后返回ID
+    --                       对应实体类      对应数据库列表       返回结果集类型                执行的时间
+        <selectKey keyProperty="id" keyColumn="id" resultType="java.lang.Integer" order="AFTER">
+
+            select last_insert_id();
+
+        </selectKey>
 
         insert into people(nickname,avatar,gender,address,info) values(#{nickname},#{avatar},#{gender},#{address},#{info});
 

@@ -95,6 +95,8 @@ public class MybatisTest {
 
         userDao.saveUser(user);
 
+        System.out.println(user);
+
 
     }
 
