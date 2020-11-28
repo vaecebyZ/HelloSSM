@@ -12,11 +12,32 @@
 
     </select>
 
+<!--    查询一个-->
+    <select id="findOne" parameterType="io.github.vaecebyz.domain.User" resultType="io.github.vaecebyz.domain.User">
+
+        select  * from people where nickname = #{nickname}
+
+    </select>
+
+
     <!--    保存用户-->
     <insert id="saveUser" parameterType="io.github.vaecebyz.domain.User">
 
         insert into people(nickname,avatar,gender,address,info) values(#{nickname},#{avatar},#{gender},#{address},#{info});
 
     </insert>
+    <!--更新用户-->
+    <update id="updateUser" parameterType="io.github.vaecebyz.domain.User">
+
+        update  people set nickname=#{nickname},avatar=#{avatar},gender=#{gender},address=#{address},info=#{info} where id = #{id};
+
+    </update>
+
+    <!--删除用户-->
+    <delete id="delUser" parameterType="io.github.vaecebyz.domain.User">
+
+        delete from people where id = #{id}
+
+    </delete>
 
 </mapper>

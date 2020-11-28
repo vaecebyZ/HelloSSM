@@ -34,11 +34,14 @@ public class MybatisTest {
 
     @After //测试结束之后执行
     public void destroy() throws Exception {
+        //提交事务
+        session.commit();
         //释放资源
         session.close();
         in.close();
     }
 
+    //查询所有
     @Test
     public void testFindAll() {
 
@@ -50,8 +53,23 @@ public class MybatisTest {
 
     }
 
+    //查询一个
     @Test
-    public void testSave() throws Exception {
+    public void testFindOne() {
+
+        User user = new User();
+
+        user.setNickname("vaeceby5");
+
+        user = userDao.findOne(user);
+
+        System.out.println(user);
+
+    }
+
+    //增加
+    @Test
+    public void testSave(){
         User user = new User();
         user.setNickname("vaecebyz");
         user.setAvatar("vaecebyz.jpg");
@@ -63,8 +81,32 @@ public class MybatisTest {
 
         userDao.saveUser(user);
 
-        //提交事务
-        session.commit();
 
+    }
+
+    //更新
+    @Test
+    public void testUpdate() {
+
+        User user = new User();
+        user.setNickname("vaeceby5");
+        user.setAvatar("vaecebyz3.jpg");
+        user.setGender(1);
+        user.setAddress("浙3江");
+        user.setInfo("你好4");
+        user.setId(2);
+
+        userDao.updateUser(user);
+    }
+
+    //删除
+    @Test
+    public void testDelUser() {
+
+        User user = new User();
+
+        user.setId(3);
+
+        userDao.delUser(user);
     }
 }
