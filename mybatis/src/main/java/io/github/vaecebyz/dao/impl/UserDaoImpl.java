@@ -24,4 +24,28 @@ public class UserDaoImpl implements IUserDao {
         session.close();
         return users;
     }
+
+    public void upData(User user) {
+        //使用工厂
+        SqlSession session = factory.openSession();
+        session.update("io.github.vaecebyz.dao.IUserDao.upData", user);
+        session.commit();
+        session.close();
+    }
+
+    public void saveUser(User user) {
+        //使用工厂
+        SqlSession session = factory.openSession();
+        session.insert("io.github.vaecebyz.dao.IUserDao.saveUser", user);
+        session.commit();
+        session.close();
+    }
+
+    public void delUser(User u) {
+        //使用工厂
+        SqlSession session = factory.openSession();
+        session.delete("io.github.vaecebyz.dao.IUserDao.delUser", u);
+        session.commit();
+        session.close();
+    }
 }

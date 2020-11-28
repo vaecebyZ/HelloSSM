@@ -11,4 +11,10 @@ public interface IUserDao {
 //    @Select("select * from people")
 
     List<User> findAll();
+
+    void upData(User user);
+
+    void saveUser(User user);
+
+    void delUser(User u);
 }
