@@ -66,13 +66,13 @@ public class MybatisTest {
         System.out.println(user);
 
     }
-    
+
     //模糊
     @Test
     public void testFindOneByName() {
 
 
-        List<User> users = userDao.findOneByName("vae%");
+        List<User> users = userDao.findOneByName("vae");
 
         for (User u : users) {
             System.out.println(u);
@@ -83,6 +83,7 @@ public class MybatisTest {
     //增加
     @Test
     public void testSave() {
+
         User user = new User();
         user.setNickname("vaecebyz");
         user.setAvatar("vaecebyz.jpg");

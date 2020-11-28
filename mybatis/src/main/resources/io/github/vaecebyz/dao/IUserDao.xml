@@ -21,7 +21,7 @@
     <!--模糊查询-->
     <select id="findOneByName" parameterType="java.lang.String" resultType="io.github.vaecebyz.domain.User">
 
-    select * from people where nickname like #{nickname}
+    select * from people where nickname like '%${value}%'
 
     </select>
 
