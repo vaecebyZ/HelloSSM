@@ -5,8 +5,22 @@
 
 <mapper namespace="io.github.vaecebyz.dao.IUserDao">
 
+    <!--    配置查询结果的列名和实体对象映射-->
+    <resultMap id="userMap" type="io.github.vaecebyz.domain.User">
+
+        <!--主键对应   来自类    来自数据库-->
+        <id property="id" column="id"></id>
+        <!--        严格区分大小写            windows下不用区分-->
+        <result property="nickname" column="nickname"></result>
+        <result property="avatar" column="avatar"></result>
+        <result property="address" column="address"></result>
+        <result property="info" column="info"></result>
+        <result property="gender" column="gender"></result>
+
+    </resultMap>
+
     <!--    配置查询所有-->
-    <select id="findAll" resultType="io.github.vaecebyz.domain.User">
+    <select id="findAll" resultMap="userMap">
 
         select * from people
 
@@ -27,15 +41,16 @@
 
     <!--    保存用户-->
     <insert id="saveUser" parameterType="io.github.vaecebyz.domain.User">
-    -- 插入操作后返回ID
-    --                       对应实体类      对应数据库列表       返回结果集类型                执行的时间
+        -- 插入操作后返回ID
+        -- 对应实体类 对应数据库列表 返回结果集类型 执行的时间
         <selectKey keyProperty="id" keyColumn="id" resultType="java.lang.Integer" order="AFTER">
 
             select last_insert_id();
 
         </selectKey>
 
-        insert into people(nickname,avatar,gender,address,info) values(#{nickname},#{avatar},#{gender},#{address},#{info});
+        insert into people(nickname,avatar,gender,address,info)
+        values(#{nickname},#{avatar},#{gender},#{address},#{info});
 
     </insert>
     <!--更新用户-->
