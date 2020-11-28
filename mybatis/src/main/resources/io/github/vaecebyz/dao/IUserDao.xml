@@ -12,13 +12,18 @@
 
     </select>
 
-<!--    查询一个-->
+    <!--    查询一个-->
     <select id="findOne" parameterType="io.github.vaecebyz.domain.User" resultType="io.github.vaecebyz.domain.User">
 
         select  * from people where nickname = #{nickname}
 
     </select>
+    <!--模糊查询-->
+    <select id="findOneByName" parameterType="java.lang.String" resultType="io.github.vaecebyz.domain.User">
 
+    select * from people where nickname like #{nickname}
+
+    </select>
 
     <!--    保存用户-->
     <insert id="saveUser" parameterType="io.github.vaecebyz.domain.User">

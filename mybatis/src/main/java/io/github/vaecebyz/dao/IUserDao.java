@@ -20,4 +20,6 @@ public interface IUserDao {
     int delUser(User user);
 
     User findOne(User user);
+
+    List<User> findOneByName(String nickname);
 }
