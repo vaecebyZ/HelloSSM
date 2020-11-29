@@ -4,6 +4,12 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!--mybatis主要配置-->
 <configuration>
+<!--    配置properties-->
+    <!--在属性外部应用 使用 resources-->
+    <properties resource="jdbcConfig.properties">
+
+    </properties>
+
     <!--配置环境-->
     <environments default="mysql">
         <!--        配置mysql环境-->
@@ -12,11 +18,11 @@
             <transactionManager type="JDBC"></transactionManager>
             <!--            配置连接池-->
             <dataSource type="POOLED">
-                <!--                配置连接数据库的信息-->
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://127.0.0.1:3306/test"/>
-                <property name="username" value="root"/>
-                <property name="password" value="123456"/>
+                <!--                配置连接数据库的信息 用${name引用}-->
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.username}"/>
+                <property name="password" value="${jdbc.password}"/>
             </dataSource>
         </environment>
     </environments>
