@@ -4,11 +4,20 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <!--mybatis主要配置-->
 <configuration>
-<!--    配置properties-->
+    <!--    配置properties-->
     <!--在属性外部应用 使用 resources-->
     <properties resource="jdbcConfig.properties">
 
     </properties>
+    <!--typeAliases 用来配置别名，type是全限定类名。Alias属性指代别名 之后就不区分大小写-->
+    <typeAliases>
+
+        <!--        <typeAlias type="io.github.vaecebyz.domain.User" alias="user"></typeAlias>-->
+        <!--   用于指定配置别名的包，之后在该包下的所有类都会被注册且不区分大小写 -->
+        <package name="io.github.vaecebyz.domain"/>
+
+    </typeAliases>
+
 
     <!--配置环境-->
     <environments default="mysql">
@@ -32,6 +41,8 @@
         <!--                <mapper class="io.github.vaecebyz.dao.IUserDao"></mapper>-->
 
         <!--    指定映射文件位置-->
-        <mapper resource="io/github/vaecebyz/dao/IUserDao.xml"></mapper>
+        <!--        <mapper resource="io/github/vaecebyz/dao/IUserDao.xml"></mapper>-->
+        <!--   也能用package 来指定dao接口所在的包 就不用写 resources 和class了 注意命名规范     -->
+        <package name="io.github.vaecebyz.dao"/>
     </mappers>
 </configuration>

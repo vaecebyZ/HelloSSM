@@ -27,7 +27,7 @@
     </select>
 
     <!--    查询一个-->
-    <select id="findOne" parameterType="io.github.vaecebyz.domain.User" resultType="io.github.vaecebyz.domain.User">
+    <select id="findOne" parameterType="User" resultType="io.github.vaecebyz.domain.User">
 
         select  * from people where nickname = #{nickname}
 
